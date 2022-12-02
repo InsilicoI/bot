@@ -1,0 +1,100 @@
+from pyrogram import Client
+import asyncio
+from pyrogram.errors import FloodWait
+
+api_id = '26555018'
+api_hash = '90f13254ffb21cb0172c8d54218e237b'
+phone = '+62 831 51646058'
+
+
+TEXT = 'ПОДПИШУСЬ\ПОСТАВЛЮ РЕАКЦИЮ🤍🤍 ПИШИ!                             @sub_vz'
+app = Client("my_app_tg", api_id=api_id, api_hash=api_hash)
+
+#app.run()
+
+async def main():
+    
+    app = Client("my_app_tg")
+
+
+    async with app:
+
+        i = 0 
+        while True:
+            await asyncio.sleep(60);
+            try:
+                await app.send_message("@Piar4ikVtelege",TEXT )
+                i += 1;
+                await app.send_message("@piarchik_vz", TEXT)
+                i += 1;
+                await app.send_message("@yourvp", TEXT)
+                i += 1;
+                await app.send_message("@prilutskij_d", TEXT)
+                i += 1;
+                await app.send_message("@piarchatVZC", TEXT)
+                i += 1;
+                #await app.send_message("@VzaimpodpiskaVtelege",TEXT) 
+                #i += 1;
+                await app.send_message("@ppiarrolok", TEXT)
+                i += 1;
+                await app.send_message("@chaat_vz", TEXT)
+                i += 1;
+                await app.send_message("@telegavzaimno", TEXT)
+                i += 1;
+                #await app.send_message("@piarrolock",TEXT)
+                #i += 1;
+                #await app.send_message("@PodpiskaVzaimnoO", TEXT)
+                #i += 1; 
+                #await app.send_message("@vptelegramvp",TEXT)
+                #i += 1;
+                await app.send_message("@prchatlive",TEXT)
+                i += 1;
+                await app.send_message("@piarrlok",TEXT)
+                i += 1;
+                await app.send_message("@piarchat_as", TEXT)
+                i += 1;
+                await app.send_message("@piarcchhik",TEXT)
+                i += 1;
+                #await app.send_message("@vz_piar_telegram",TEXT )
+                #i += 1;
+                await app.send_message("@vppiarc",TEXT)
+                i += 1;
+                await app.send_message("@piarolka",TEXT)
+                i += 1;
+                await app.send_message("@vpvzaimniypiarr",TEXT)
+                i += 1;
+                await app.send_message("@piarchatvz11",TEXT)
+                i += 1;
+                await app.send_message("@piarxrolki",TEXT)
+                i += 1;
+                
+                await app.send_message("@piar_only", TEXT)
+                i += 1;
+                await app.send_message("@piaarch",TEXT)
+                i += 1;
+                #await app.send_message("@piarrollk", TEXT)
+                i += 1;
+                await app.send_message("@telega_vzaimno",TEXT)
+                i += 1;
+                await app.send_message("@vzaimnaypodpiska69",TEXT)
+                i += 1;
+                await app.send_message("@telega_reklami",TEXT)
+                i += 1;
+                await app.send_message("@praysrdnos",TEXT)
+                i += 1;
+                await app.send_message("@PIARCHAT_OTPRIX",TEXT)
+                i += 1;
+                await app.send_message("@VIPPIARR777",TEXT)
+                i += 1;
+                await app.send_message("@prilutskijjjj",TEXT)
+                i += 1;
+                await app.send_message("@hatpiarrrr",TEXT)
+                i += 1;
+            except FloodWait as e:
+                await asyncio.sleep(e.value)    
+
+
+asyncio.run(main())
+
+
+
