@@ -1,100 +1,230 @@
 from pyrogram import Client
 import asyncio
-from pyrogram.errors import FloodWait
+from pyrogram.errors import FloodWait,ChatWriteForbidden,Forbidden, ChatIdInvalid, UserInvalid, ChatInvalid,UsernameInvalid, PeerIdInvalid, PeerIdNotSupported, ChatIdEmpty, UsernameNotOccupied
+from datetime import datetime
 
-api_id = '26555018'
-api_hash = '90f13254ffb21cb0172c8d54218e237b'
-phone = '+62 831 51646058'
+api_id = '26118991'
+api_hash = '06da485034d15cc99e2f0706bbd178f9'
+phone = '+84 924558731'
+
+list = [ 
+        "@VzaimpodpiskaVtelege",
+        "@PodpiskaVzaimnoO",
+        "@piarrlok",
+        #"@cnat_vz",
+        #"@Piar4ikVtelege",
+        "@piarchik_vz", 
+        "@vzaimnie_podpiskii",
+        #"@piar_2_0_2_2",
+        #"@crekervk",
+        "@piarchatkatee",
+        "@piarchatVZC",
+        "@telegavzaimno",
+        "@vzaim_pdp",
+        "@vz_telegramka",
+        "@PRchatrollok",
+        "@piar_gruppka",
+        #"@chat_vali",
+        "@piarrolllokk",
+        "@piar4ix",
+        "@cchat_vz",
+        "@piar_msk",
+        "@piarrcchaat",
+        "@chaat_gram",
+        "@vzpiarzz",
+        "@reklama_bespl",
+        "@vz_telegram_vp",
+        "@yourvp",
+        "@prilutskij_d",
+        "@ppiarrolok",
+        "@chaat_vz",
+        "@piarrolock",
+        "@vptelegramvp",
+        "@prchatlive",
+        "@piarchat_as",
+        "@piarrchatr",
+        "@piarcchhik",
+        "@vz_piar_telegram",
+        "@vppiarc",
+        "@piarolka",
+        #"@vpvzaimniypiarr",
+        "@piarchatvz11",
+        "@piar_only",
+        "@piaarch",
+        #"@piarrollk",
+        "@telega_vzaimno",
+        "@telega_reklami",
+        #!!!!"@praysrdnos",
+        "@PIARCHAT_OTPRIX",
+        "@prilutskijjjj",
+        "@hatpiarrrr",
+        "@piarxrolki",
+        
+        "@vpprime",
+        "@rdno_chatc",
+        "@piarzgroupp",
+        "@smmpanelsearch",
+        "@piarxchatikkk",
+        "@vzaimnolike1",
+        "@piaarchx",
+        "@kolomio",
+        "@piarke",
+        "@pr_chat_rdno",
+        "@vzaimno_telegram_comm",
+        "@piaaar_chatik",
+        "@piarxchat1",
+        "@piaaarrrchik",
+        "@PRmyPRmy",
+        "@likechat_aktivnosti",
+        "@aktivw",
+        "@piarchatmgn",
+        "@boochatik",
+        "@piarchat_vali",
+        "@piar_telega_vz",
+        "@piarchatzaiii",
+        "@chtpr",
+        "@piar_chat_rolok",
+        "@dkdkjdhx",
+        "@kerotelegram",
+        "@piarotAhmeda",
+        "@vzaim_chatik",
+        "@piarrolkkk",
+        "@p2p_chatt",
+        "@rdno_4at",
+        
+        ]
 
 
-TEXT = 'ПОДПИШУСЬ\ПОСТАВЛЮ РЕАКЦИЮ🤍🤍 ПИШИ!                             @sub_vz'
-app = Client("my_app_tg", api_id=api_id, api_hash=api_hash)
+TEXT = 'КТО ВЗ?!  ["@thqlsaa_zzz"](https://t.me/sub_vz)  '       
+
+app = Client("my_app_tg1(2)", api_id=api_id, api_hash=api_hash)
+msg_delay = 0.2
+flood_sleep = 35
+cycl_dly=150
 
 #app.run()
 
+
 async def main():
     
-    app = Client("my_app_tg")
-
-
+    app = Client("my_app_tg1(2)")
+    
     async with app:
+        print("Bot started!")
+
+        counter = 0
+        for name in list:
+                try:
+                    counter += 1
+                    print(f'element of list: {name}, counter: {counter}')
+                    current_GMT_timestamp = datetime.utcnow()
+                    print(f'{current_GMT_timestamp}Отправленно в {name}')
+                    await app.send_message(name, TEXT)
+                    await asyncio.sleep(msg_delay)
+                    
+                    if counter % 8 == 0:
+                        print(f'///////////////////TIME TO SLEEP////////////{flood_sleep}sec/////////////')
+                        await asyncio.sleep(flood_sleep)
+                    
+            
+                except FloodWait as e:
+                    print(e)
+                    print (f"Не могу писать в {name}, флуд таймер")
+                    await asyncio.sleep(e.value) 
+                except ChatIdEmpty as z:
+                    print(z)
+                    
+                    print(f"забанен в {name}.Удален из списка.")
+                except PeerIdInvalid as t:
+                    print(t)
+                    
+                    print(f"забанен в {name}.Удален из списка.")
+                except ChatWriteForbidden  as x:
+                    print(x)
+                    print(f"Не подписан на канал {name}.")
+                    try:
+                        await app.join_chat(name)
+                        print(f'followed {name}')
+                    except UsernameNotOccupied as us:
+                        print(f"Не существующий канал {us}")
+                    except FloodWait as zz:
+                        print(f'flood wait {zz}')
+                except Forbidden as zzz:
+                    print(zzz)
+                    print(f"Не подписан на канал {name}.")
+                    try:
+                        await app.join_chat(name)
+                        print(f'followed {name}')
+                    except UsernameNotOccupied as us:
+                        print(f"Не существующий канал {us}")
+                    except FloodWait as zz:
+                        print(f'flood wait {zz}')
+
+                    
+                    
+
+                except UsernameNotOccupied  as y:
+                    print(y)
+                    
+                    print(f"Забанен в чате {name} навсегда.")
+
+        print("///////////////////////ВЫПОЛНЕНО////////////////////////////////") 
 
         i = 0 
         while True:
-            await asyncio.sleep(60);
-            try:
-                await app.send_message("@Piar4ikVtelege",TEXT )
-                i += 1;
-                await app.send_message("@piarchik_vz", TEXT)
-                i += 1;
-                await app.send_message("@yourvp", TEXT)
-                i += 1;
-                await app.send_message("@prilutskij_d", TEXT)
-                i += 1;
-                await app.send_message("@piarchatVZC", TEXT)
-                i += 1;
-                #await app.send_message("@VzaimpodpiskaVtelege",TEXT) 
-                #i += 1;
-                await app.send_message("@ppiarrolok", TEXT)
-                i += 1;
-                await app.send_message("@chaat_vz", TEXT)
-                i += 1;
-                await app.send_message("@telegavzaimno", TEXT)
-                i += 1;
-                #await app.send_message("@piarrolock",TEXT)
-                #i += 1;
-                #await app.send_message("@PodpiskaVzaimnoO", TEXT)
-                #i += 1; 
-                #await app.send_message("@vptelegramvp",TEXT)
-                #i += 1;
-                await app.send_message("@prchatlive",TEXT)
-                i += 1;
-                await app.send_message("@piarrlok",TEXT)
-                i += 1;
-                await app.send_message("@piarchat_as", TEXT)
-                i += 1;
-                await app.send_message("@piarcchhik",TEXT)
-                i += 1;
-                #await app.send_message("@vz_piar_telegram",TEXT )
-                #i += 1;
-                await app.send_message("@vppiarc",TEXT)
-                i += 1;
-                await app.send_message("@piarolka",TEXT)
-                i += 1;
-                await app.send_message("@vpvzaimniypiarr",TEXT)
-                i += 1;
-                await app.send_message("@piarchatvz11",TEXT)
-                i += 1;
-                await app.send_message("@piarxrolki",TEXT)
-                i += 1;
+            await asyncio.sleep(cycl_dly)
+            
+            for name in list:
+                try:
+                    counter += 1
+                    print(f'element of list: {name}, counter: {counter}')
+                    current_GMT_timestamp = datetime.utcnow()
+                    print(f'{current_GMT_timestamp}Отправленно в {name}')
+                    await app.send_message(name, TEXT)
+                    await asyncio.sleep(msg_delay)
+                    
+                    if counter % 8 == 0:
+                        print(f'///////////////////TIME TO SLEEP////////////{flood_sleep}sec/////////////')
+                        await asyncio.sleep(flood_sleep)                  
+                    i += 1   
+
+                except FloodWait as e:
+                    print(e)
+                    print (f"Не могу писать в {name}, флуд таймер")
+                    await asyncio.sleep(e.value)
+                except ChatIdEmpty as z:
+                    print(z)
+                    
+                    print(f"забанен в {name}.Удален из списка.")
+                except ChatWriteForbidden  as x:
+                    print(x)
+                    print(f"Не подписан на канал {name}.")
+                    try:
+                        await app.join_chat(name)
+                        print(f'followed {name}')
+                    except UsernameNotOccupied as us:
+                        print(f"Не существующий канал {us}")
+                    except FloodWait as zz:
+                        print(f'flood wait {zz}')
+                except Forbidden as zzz:
+                    print(zzz)
+                    print(f"Не подписан на канал {name}.")
+                    try:
+                        await app.join_chat(name)
+                        print(f'followed {name}')
+                    except UsernameNotOccupied as us:
+                        print(f"Не существующий канал {us}")
+                    except FloodWait as zz:
+                        print(f'flood wait {zz}')
+                except UsernameNotOccupied  as y:
+                    print(y)
+                    print(f"Забанен в чате {name} навсегда.")
                 
-                await app.send_message("@piar_only", TEXT)
-                i += 1;
-                await app.send_message("@piaarch",TEXT)
-                i += 1;
-                #await app.send_message("@piarrollk", TEXT)
-                i += 1;
-                await app.send_message("@telega_vzaimno",TEXT)
-                i += 1;
-                await app.send_message("@vzaimnaypodpiska69",TEXT)
-                i += 1;
-                await app.send_message("@telega_reklami",TEXT)
-                i += 1;
-                await app.send_message("@praysrdnos",TEXT)
-                i += 1;
-                await app.send_message("@PIARCHAT_OTPRIX",TEXT)
-                i += 1;
-                await app.send_message("@VIPPIARR777",TEXT)
-                i += 1;
-                await app.send_message("@prilutskijjjj",TEXT)
-                i += 1;
-                await app.send_message("@hatpiarrrr",TEXT)
-                i += 1;
-            except FloodWait as e:
-                await asyncio.sleep(e.value)    
 
+                    continue
+        
+            print("///////////////////////ВЫПОЛНЕНО////////////////////////////////")    
 
+        
+        
 asyncio.run(main())
-
-
-
